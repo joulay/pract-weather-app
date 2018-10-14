@@ -7,6 +7,13 @@ var wind;
 var direction; 
 
 
+function updateByZip(zip) {
+    var url = "http://api.openweathermap.org/data/2.5/weather?" + 
+        "zip=" + zip + 
+        "&APPID=" + APPID;
+    sendRequest(url); 
+}
+
 function update(weather) {
     wind.innerHTML = weather.wind;
     direction.innerHTML = weather.direction;
