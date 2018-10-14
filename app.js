@@ -14,6 +14,23 @@ function updateByZip(zip) {
     sendRequest(url); 
 }
 
+function sendRequest(url) {
+    var xmlhttp = new XMLHttpRequest();
+    xml.http.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var data = JSON.parse(xmlhttp.responseText);
+            var weather = {};
+            weather.icon = data.weather[0].id;
+            weather.humidity = data.main.humidity;
+            weather.wind = data.wind.speed;
+            weather.direction = data.wind.deg;
+            weather.loc = data.name;
+            weather.temp = data.main.temp;
+            upodate(weather);
+        }
+    }
+}
+
 function update(weather) {
     wind.innerHTML = weather.wind;
     direction.innerHTML = weather.direction;
