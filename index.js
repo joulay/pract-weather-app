@@ -6,7 +6,15 @@ var wind;
 var direction; 
 
 
+function update(weather) {
+    wind.innerHTML = weather.wind;
+    direction.innerHTML = weather.direction;
+    humidity.innerHTML = weather.humidity;
+    loc.innerHTML = weather.loc;
+    temp.innerHTML = weather.temp;
+    icon.src = "img/code/" + weather.icon + ".png";
 
+}
 
 
 
