@@ -16,7 +16,7 @@ function updateByZip(zip) {
 
 function sendRequest(url) {
     var xmlhttp = new XMLHttpRequest();
-    xml.http.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var data = JSON.parse(xmlhttp.responseText);
             var weather = {};
@@ -28,7 +28,9 @@ function sendRequest(url) {
             weather.temp = data.main.temp;
             upodate(weather);
         }
-    }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
 
 function update(weather) {
@@ -59,5 +61,5 @@ window.onload = function() {
     weather.temp = "45";
     weather.icon = 200;
 
-    update(weather);
+    updateByZip(91101);
 }
